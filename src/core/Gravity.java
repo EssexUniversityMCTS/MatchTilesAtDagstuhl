@@ -5,4 +5,9 @@ package core;
  */
 public class Gravity extends Rule {
     String direction;
+
+    @Override
+    public boolean execute(Game game) {
+        return false;
+    }
 }

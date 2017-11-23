@@ -5,4 +5,6 @@ package core;
  */
 public abstract class Rule {
 
+    public abstract boolean execute(Game game);
+
 }

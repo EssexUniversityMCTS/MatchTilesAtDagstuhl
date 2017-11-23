@@ -6,8 +6,8 @@ package json;
 public class Test {
 
     public static void main(String[] args) {
-        JSONParser parser = new JSONParser ("../MatchTilesAtDagstuhl/examples/Bejeweled.mtg");
-        System.out.println("created parser");
+//        JSONParser parser = new JSONParser ("../MatchTilesAtDagstuhl/examples/Bejeweled.mtg");
+//        System.out.println("created parser");
 
     }
 
