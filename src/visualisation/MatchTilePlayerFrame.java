@@ -6,8 +6,11 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
+
+import player.MatchTilePlayerAction;
 
 public class MatchTilePlayerFrame extends JFrame implements ComponentListener{
 
@@ -60,9 +63,10 @@ public class MatchTilePlayerFrame extends JFrame implements ComponentListener{
     
 	public void componentShown(ComponentEvent arg0) { }
 	
-	//public ArrayList<MatchTileUserAction> userActionsSinceLastTick(){
-		
-	//}
-	//}
+	public ArrayList<MatchTilePlayerAction> userActionsSinceLastTick(){
+		ArrayList<MatchTilePlayerAction> userActions = (ArrayList<MatchTilePlayerAction>)gamePanel.userActions.clone();
+		gamePanel.userActions.clear();
+		return userActions;
+	}
 
 }

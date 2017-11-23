@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import player.MatchTilePlayerAction;
+
 public class MatchTilePlayerPanel extends JPanel{
 	
 	public MatchTileGameState gameState;
@@ -24,6 +26,8 @@ public class MatchTilePlayerPanel extends JPanel{
 	public int numCols = 0;
 	
 	public int numRows = 0;
+	
+	public ArrayList<MatchTilePlayerAction> userActions = new ArrayList();
 	
 	public MatchTilePlayerPanel(int numCols, int numRows){
 		this.numCols = numCols;
@@ -71,8 +75,10 @@ public class MatchTilePlayerPanel extends JPanel{
 	public void handleClick(MouseEvent e){
 		MatchTileCell cell = getCellAtPoint(e.getPoint());
 		if (cell != null){
-			System.out.println("Click");
-			System.out.println(cell);			
+			MatchTilePlayerAction userAction = new MatchTilePlayerAction();
+			userAction.actionType = MatchTilePlayerAction.CLICK_ACTION;
+			userAction.clickedCell = cell;
+			userActions.add(userAction);
 		}
 	}
 	
@@ -86,15 +92,17 @@ public class MatchTilePlayerPanel extends JPanel{
 			}
 		}
 		if (hasDrag){
-			System.out.println("Highlighted by drag:");
+			MatchTilePlayerAction userAction = new MatchTilePlayerAction();
+			userAction.actionType = MatchTilePlayerAction.DRAG_ACTION;
 			for (int x = 0; x < gameState.numCols; x++){
 				for (int y = 0; y < gameState.numRows; y++){
 					if (gameState.cells[x][y].isHighlighted){
-						System.out.println(gameState.cells[x][y]);
+						userAction.highlightedCells.add(gameState.cells[x][y]);
 						gameState.cells[x][y].isHighlighted = false;
 					}
 				}
 			}
+			userActions.add(userAction);
 		}
 		updateBoard();
 	}
@@ -143,17 +151,14 @@ public class MatchTilePlayerPanel extends JPanel{
 		for (int y = 0; y < numRows; y++){
 			g.drawLine(0, y * cellHeight, w, y * cellHeight);
 		}
-		int count = 0;
 		g.setColor(Color.yellow);
 		for (int x = 0; x < gameState.numCols; x++){
 			for (int y = 0; y < gameState.numRows; y++){
 				if (gameState.cells[x][y].isHighlighted == true){
 					g.drawRect(cellWidth * x, cellHeight * y, cellWidth, cellHeight);	
-					count++;
 				}
 			}
 		}
-		System.out.println(count);
 		g.dispose();
 		repaint();
 	}
@@ -161,11 +166,10 @@ public class MatchTilePlayerPanel extends JPanel{
 	public void paintComponent(Graphics g) {
 		if (g != null) {
 			Graphics2D g2 = (Graphics2D) g.create();
-			//g2.setTransform(AffineTransform.getScaleInstance(0.5d, 0.5d));
 			if (gameImage != null){
 				g2.drawImage(gameImage, 0, 0, null);				
 			}
 		}
 	}
-
+	
 }
