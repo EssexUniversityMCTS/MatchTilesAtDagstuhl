@@ -7,6 +7,11 @@ import visualisation.MatchTilePlayerFrame;
  */
 public class Game
 {
+    public Grid grid;
+    public Actions actions;
+    public Rules rules;
+    public Termination termination;
+
     private MatchTilePlayerFrame frame;
 
 
