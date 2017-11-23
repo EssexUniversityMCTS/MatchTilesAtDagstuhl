@@ -1,0 +1,37 @@
+{
+	"grid":
+	{
+		"type": { "class": "Square", "size":4 }
+		"cell": { 
+			"class": "Square", 
+			"blocks": "single",
+			"colour": "true"
+ 		}
+	}
+
+	"actions":
+	{
+		"rotate": {"size":2}
+	}
+
+	"rules":
+	{
+		"spawning": {"class": "Top", "type": "random"}
+		"gravity": {"direction":"down"}
+		"match": 
+		{
+			"class":"Clear",
+			"type":"minimum", 
+			"number": 3,
+			"shapes": "OrthoLine",
+			"pattern": "colour",
+			"reward": {"class": "Incremental", "value":100} 
+		}
+	}
+	
+	"termination":
+	{
+		"time": {"value":100}
+	}	
+
+}
