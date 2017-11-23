@@ -1,5 +1,7 @@
 package core;
 
+import player.MatchTilePlayerAction;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,4 +17,13 @@ public class Actions {
         actions = new ArrayList<>();
     }
 
+    public boolean validate(ArrayList<MatchTilePlayerAction> tiles)
+    {
+        boolean valid = true;
+        for(Action act : actions)
+        {
+            valid &= act.validate(tiles);
+        }
+        return valid;
+    }
 }

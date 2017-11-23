@@ -27,4 +27,11 @@ public class MatchTileCell {
 		}
 		return "(" + x + "," + y + ") colour = " + colour.toString();
 	}
+
+	public MatchTileCell copy()
+	{
+		MatchTileCell mtc = new MatchTileCell(this.x, this.y, this.colour, this.isEmpty);
+		return mtc;
+	}
+
 }

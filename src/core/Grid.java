@@ -11,12 +11,12 @@ import java.util.Random;
 public class Grid {
 
     String type;
-    int size;
+    public int size;
     String cell;
     String blocks;
     String color;
 
-    MatchTileCell[][] grid;
+    public MatchTileCell[][] grid;
 
     public Grid() {
     }
@@ -28,7 +28,7 @@ public class Grid {
         grid = new MatchTileCell[size][size];
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
-                Color c = new Color(rnd.nextInt(2), rnd.nextInt(2), rnd.nextInt(2));
+                Color c = new Color(rnd.nextInt(2)*255, rnd.nextInt(2)*255, rnd.nextInt(2)*255);
                 grid[i][j] = new MatchTileCell(i, j, c, false);
             }
         }

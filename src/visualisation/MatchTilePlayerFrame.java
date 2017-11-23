@@ -24,7 +24,7 @@ public class MatchTilePlayerFrame extends JFrame implements ComponentListener{
 	}
 	
 	public MatchTilePlayerFrame(int numRows, int numCols){
-		setTitle("ANGELINA 17");
+		setTitle("MATCH TILES GAME");
 		setSize(100 * numRows, 100 * numCols);
 		setVisible(true);
 		gamePanel = new MatchTilePlayerPanel(numRows, numCols);
@@ -65,6 +65,8 @@ public class MatchTilePlayerFrame extends JFrame implements ComponentListener{
 	
 	public ArrayList<MatchTilePlayerAction> userActionsSinceLastTick(){
 		ArrayList<MatchTilePlayerAction> userActions = (ArrayList<MatchTilePlayerAction>)gamePanel.userActions.clone();
+		if(userActions.size() > 0)
+			System.out.println("->" + userActions.size());
 		gamePanel.userActions.clear();
 		return userActions;
 	}
