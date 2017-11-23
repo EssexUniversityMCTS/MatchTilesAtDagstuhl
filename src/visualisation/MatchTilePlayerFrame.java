@@ -59,5 +59,10 @@ public class MatchTilePlayerFrame extends JFrame implements ComponentListener{
     }
     
 	public void componentShown(ComponentEvent arg0) { }
+	
+	//public ArrayList<MatchTileUserAction> userActionsSinceLastTick(){
+		
+	//}
+	//}
 
 }
