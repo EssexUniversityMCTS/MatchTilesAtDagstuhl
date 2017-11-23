@@ -148,13 +148,14 @@ public class MatchTilePlayerPanel extends JPanel{
 		for (int x = 0; x < gameState.numCols; x++){
 			for (int y = 0; y < gameState.numRows; y++){
 				if (gameState.cells[x][y].isHighlighted == true){
-					g.fillRect(cellWidth * x, cellHeight * y, cellWidth, cellHeight);	
+					g.drawRect(cellWidth * x, cellHeight * y, cellWidth, cellHeight);	
 					count++;
 				}
 			}
 		}
 		System.out.println(count);
 		g.dispose();
+		repaint();
 	}
 	
 	public void paintComponent(Graphics g) {
