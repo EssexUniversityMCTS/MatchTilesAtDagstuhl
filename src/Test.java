@@ -1,8 +1,5 @@
 import core.Game;
-import json.JSONParser;
 import visualisation.MatchTilePlayerFrame;
-
-import javax.swing.*;
 
 class Test
 {
