@@ -2,6 +2,8 @@ package core;
 
 import visualisation.MatchTilePlayerFrame;
 
+import java.awt.*;
+
 /**
  * Created by dperez on 23/11/2017.
  */
@@ -67,6 +69,8 @@ public class Game
 
         //Frame
         MatchTilePlayerFrame frame = new MatchTilePlayerFrame(g.grid.size, g.grid.size);
+        frame.gamePanel.gameState.setColour(1,1, Color.red);
+        frame.updateBoard(frame.gamePanel.gameState);
         g.setFrame(frame);
 
         //Actions
