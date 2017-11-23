@@ -18,15 +18,15 @@ public class Rules {
 
     public void execute(Game game)
     {
-        boolean noChange = false;
+        boolean change = true;
 
-        while(!noChange)
+        while(change)
         {
-            noChange = false;
+            change=false;
             for(Rule r : rules)
             {
                 boolean triggered = r.execute(game);
-                noChange |= triggered;
+                change |= triggered;
             }
         }
     }

@@ -17,12 +17,15 @@ public class Actions {
         actions = new ArrayList<>();
     }
 
-    public boolean validate(ArrayList<MatchTilePlayerAction> tiles)
+    public boolean execute(Game game, ArrayList<MatchTilePlayerAction> tiles)
     {
         boolean valid = true;
         for(Action act : actions)
         {
-            valid &= act.validate(tiles);
+            boolean thisValid = act.validate(tiles);
+            if(thisValid)
+                act.execute(game, tiles);
+            valid &= thisValid;
         }
         return valid;
     }

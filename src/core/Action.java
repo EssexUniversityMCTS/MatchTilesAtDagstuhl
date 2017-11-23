@@ -1,5 +1,6 @@
 package core;
 
+import game_states.MatchTileCell;
 import player.MatchTilePlayerAction;
 
 import java.util.ArrayList;
@@ -20,20 +21,34 @@ public class Action {
         if (tiles.size() != 2)
             return false;
 
+        if(tiles.get(1).highlightedCells.size() != 2)
+            return false;
 
-        MatchTilePlayerAction mtpa1 = tiles.get(0);
-        MatchTilePlayerAction mtpa2 = tiles.get(1);
+        MatchTilePlayerAction mtpa = tiles.get(1);
+        MatchTileCell first = mtpa.highlightedCells.get(0);
+        MatchTileCell second = mtpa.highlightedCells.get(1);
 
-        if (mtpa1.clickedCell.x == mtpa2.clickedCell.x) {
-            if ((mtpa1.clickedCell.y == mtpa2.clickedCell.y + 1) ||
-                    (mtpa1.clickedCell.y == mtpa2.clickedCell.y - 1))
+        if (first.x == second.x) {
+            if ((first.y == second.y + 1) ||
+                    (first.y == second.y - 1))
                 return true;
-        } else if (mtpa1.clickedCell.y == mtpa2.clickedCell.y) {
-            if ((mtpa1.clickedCell.x == mtpa2.clickedCell.x + 1) ||
-                    (mtpa1.clickedCell.x == mtpa2.clickedCell.x + 1))
+        } else if (first.y == second.y) {
+            if ((first.x == second.x + 1) ||
+                    (first.x == second.x - 1))
                 return true;
         }
 
         return false;
+    }
+
+    public void execute(Game game, ArrayList<MatchTilePlayerAction> tiles) {
+
+        MatchTilePlayerAction mtpa = tiles.get(1);
+        MatchTileCell first = mtpa.highlightedCells.get(0);
+        MatchTileCell second = mtpa.highlightedCells.get(1);
+
+        MatchTileCell swap = game.conf.grid.grid[first.x][first.y];
+        game.conf.grid.grid[first.x][first.y] = game.conf.grid.grid[second.x][second.y];
+        game.conf.grid.grid[second.x][second.y] = swap;
     }
 }

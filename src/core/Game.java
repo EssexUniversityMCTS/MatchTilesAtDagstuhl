@@ -35,7 +35,6 @@ public class Game
             // Determine the time to adjust framerate.
             long then = System.currentTimeMillis();
 
-
             this.gameCycle();
 
             // Get the remaining time to keep fps.
@@ -45,7 +44,6 @@ public class Game
             // Wait until de next cycle.
             waitStep(remaining);
 
-            frame.gamePanel.repaint();
 
         }
 
@@ -60,12 +58,17 @@ public class Game
             //Ask action to the player.
             frame.gamePanel.repaint();
             ArrayList<MatchTilePlayerAction> tiles = frame.userActionsSinceLastTick();
-            valid = conf.actions.validate(tiles);
+            valid = conf.actions.execute(this, tiles);
+
+            if(tiles.size()>=2)
+                frame.clearActionsSinceLastTick();
         }
+        frame.clearActionsSinceLastTick();
 
         conf.rules.execute(this);
         gameOver = conf.termination.check(this);
 
+        updateBoardFrame();
     }
 
     /**
@@ -88,6 +91,12 @@ public class Game
         this.frame = frame;
     }
 
+    public void updateBoardFrame()
+    {
+        frame.gamePanel.gameState.update(this);
+        frame.updateBoard(frame.gamePanel.gameState);
+    }
+
     public static void main(String args[])
     {
         //test
@@ -101,9 +110,8 @@ public class Game
 
         //Frame
         MatchTilePlayerFrame frame = new MatchTilePlayerFrame(g.conf.grid.size, g.conf.grid.size);
-        frame.gamePanel.gameState.update(g);
-        frame.updateBoard(frame.gamePanel.gameState);
         g.setFrame(frame);
+        g.updateBoardFrame();
 
         //Actions
         g.conf.actions = new Actions();
@@ -114,6 +122,8 @@ public class Game
         Match m = new Match();
         m.number = 3;
         m.reward = 100;
+        m.shapes = "OrthoLine";
+        m.pattern = "colour";
         g.conf.rules.rules.add(m);
 
         //Terminations
