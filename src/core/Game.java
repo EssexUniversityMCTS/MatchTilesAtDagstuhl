@@ -17,11 +17,13 @@ public class Game
 
     public boolean gameOver;
     public int gameTick;
+    public int points;
 
     public Game()
     {
         gameOver=false;
         gameTick = 0;
+        points=0;
     }
 
     public void playGame()
@@ -44,11 +46,8 @@ public class Game
 
         rules.execute(this);
 
+        gameOver = termination.check(this);
     }
-
-
-
-
 
 
     public void setFrame(MatchTilePlayerFrame frame)
