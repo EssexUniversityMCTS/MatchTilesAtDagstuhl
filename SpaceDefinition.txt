@@ -1,0 +1,54 @@
+Options:
+
+board properties
+
+p. numCols (2…17)
+p. numRows (2…17)
+
+default: single tiles
+
+===
+number of tile types (1…6)
+
+cell properties
+colour (1…6)
+shape (circle, triangle, hexagon, square)
+size (1…10)
+===
+player actions
+
+tap a tile (on/off)
+tap an empty cell (on/off)
+drag a general chain (on/off)
+drag a tile chain (on/off)
+drag an empty cell chain (on/off)
+
+===
+tile grouping conditions
+
+conjoined/disjoined
+score increase required/not required
+
+boolean
+(cell type = dragged empty, dragged tile, empty neighbour, tiled neighbour)
+(what aspect is being matched) [null, colour, shape, size]
+(size of the matching group)
+ 
+
+===
+boolean
+(cell type = dragged empty, dragged tile, empty neighbour, tiled neighbour)
+(what aspect is being matched)
+(size of the matching group)
+
+
+response to actions
+
+clear (on/off)
+switch (2 cells get swapped)
+all empty cells are populated with a member from matching group
+repulse
+
+spawning
+
+
