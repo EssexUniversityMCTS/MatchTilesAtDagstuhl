@@ -1,5 +1,9 @@
 package core;
 
+import game_states.MatchTileCell;
+
+import java.awt.Color;
+
 /**
  * Created by julian on 11/23/17.
  */
@@ -15,11 +19,62 @@ public class Match extends Rule {
     @Override
     public boolean execute(Game game) {
         Grid g = game.grid;
+        boolean madeChange = false;
 
-        //TODO: Execute changes in the board according to these rules
+        if (shapes.equals("OrthoLine") && pattern.equals("colour"))
+        {
+            // horizontal lines
+            for (int i = 0; i < g.size; ++i) {
+                Color lastColour = g[i][0].colour;
+                int matchLength = g[i][0].isEmpty ? 0 : 1;
+                for (int j = 1; j < g.size; ++j) {
+                    if (!g[i][j].isEmpty && g[i][j].colour == lastColour) {
+                        ++matchLength;
+                    }
+                    else {
+                        // TODO: this only implements "type: minimum" correctly
+                        if (matchLength >= number) {
+                            for (int k = 0; k < matchLength; ++k) {
+                                if (effect.equals("Clear"))
+                                {
+                                    g[i][k].isEmpty = true;
+                                    madeChange = true;
+                                }
+                                else
+                                    throw new RuntimeException("Only effect 'Clear' is implemented.");
+                            }
+                        }
+                        matchLength = 0;
+                    }
+                }
+            }
+            // vertical lines
+            for (int i = 0; i < g.size; ++i) {
+                Color lastColour = g[0][i].colour;
+                int matchLength = g[0][i].isEmpty ? 0 : 1;
+                for (int j = 1; j < g.size; ++j) {
+                    if (!g[j][i].isEmpty && g[j][i].colour == lastColour) {
+                        ++matchLength;
+                    }
+                    else {
+                        // TODO: this only implements "type: minimum" correctly
+                        if (matchLength >= number) {
+                            for (int k = 0; k < matchLength; ++k) {
+                                if (effect.equals("Clear"))
+                                {
+                                    g[k][i].isEmpty = true;
+                                    madeChange = true;
+                                }
+                                else
+                                    throw new RuntimeException("Only effect 'Clear' is implemented.");
+                            }
+                        }
+                        matchLength = 0;
+                    }
+                }
+            }
+        }
 
-
-        //Return TRUE if the Rule made a change in the engine.
-        return false;
+        return madeChange;
     }
 }
