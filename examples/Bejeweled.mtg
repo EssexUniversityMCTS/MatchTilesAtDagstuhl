@@ -7,17 +7,17 @@
 		"blocks": "single",
 		"colour": "true"
  		
-	}
+	},
 
 	"actions":
 	{
 		"rotate": {"size":2}
-	}
+	},
 
 	"rules":
 	{
-		"spawning": {"from": "Top", "type": "random"}
-		"gravity": {"direction":"down"}
+		"spawning": {"from": "Top", "type": "random"},
+		"gravity": {"direction":"down"},
 		"match": 
 		{
 			"effect":"Clear",
@@ -27,7 +27,7 @@
 			"pattern": "colour",
 			"reward": {"type": "Incremental", "value":100} 
 		}
-	}
+	},
 	
 	"terminations":
 	{
