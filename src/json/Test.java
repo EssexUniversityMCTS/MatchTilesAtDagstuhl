@@ -1,4 +1,5 @@
 package json;
+import core.Game;
 import tools.com.google.gson.Gson;
 
 /**
@@ -7,7 +8,10 @@ import tools.com.google.gson.Gson;
 public class Test {
 
     public static void main(String[] args) {
+        String json = null;
         Gson gson = new Gson();
+        Game game = gson.fromJson (json, Game.class);
+
     }
 
 }
