@@ -1,5 +1,8 @@
 package core;
 
+import game_states.MatchTileCell;
+
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -13,24 +16,20 @@ public class Grid {
     String blocks;
     String color;
 
-    Cell[][] grid;
+    MatchTileCell[][] grid;
 
     public Grid() {
-        //init();
     }
 
     public void init() {
-//        if(type.equalsIgnoreCase("Square"))
-//        {
-//
-//        }
 
         Random rnd = new Random();
 
-        grid = new Cell[size][size];
+        grid = new MatchTileCell[size][size];
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
-                grid[i][j] = new Cell(new int[]{rnd.nextInt(2), rnd.nextInt(2), rnd.nextInt(2)});
+                Color c = new Color(rnd.nextInt(2), rnd.nextInt(2), rnd.nextInt(2));
+                grid[i][j] = new MatchTileCell(i, j, c, false);
             }
         }
 

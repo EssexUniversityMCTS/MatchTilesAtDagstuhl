@@ -10,7 +10,7 @@ public class Match extends Rule {
     int number;
     String shapes;
     String pattern;
-    String reward;
+    int reward;
 
     @Override
     public boolean execute(Game game) {

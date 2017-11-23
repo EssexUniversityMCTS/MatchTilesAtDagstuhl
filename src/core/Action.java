@@ -8,4 +8,8 @@ public class Action {
     String type;
     int size;
 
+    public boolean validate()
+    {
+        return false;
+    }
 }

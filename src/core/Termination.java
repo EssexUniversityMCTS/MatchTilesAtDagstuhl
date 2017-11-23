@@ -6,5 +6,14 @@ package core;
 public class Termination {
 
     String type;
-    String value;
+    int value;
+
+
+    public boolean check(Game game)
+    {
+        if(game.gameTick >= value)
+            return true;
+        return false;
+    }
+
 }

@@ -16,7 +16,7 @@
 
 	"rules":
 	{
-		"spawning": {"class": "Top", "type": "random"}
+		"spawning": {"from": "Top", "type": "random"}
 		"gravity": {"direction":"down"}
 		"match": 
 		{
@@ -29,7 +29,7 @@
 		}
 	}
 	
-	"termination":
+	"terminations":
 	{
 		"time": {"value":100}
 	}	
