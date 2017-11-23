@@ -18,7 +18,7 @@ public class Match extends Rule {
 
     @Override
     public boolean execute(Game game) {
-        Grid g = game.grid;
+        Grid g = game.conf.grid;
         boolean madeChange = false;
 
         if (shapes.equals("OrthoLine") && pattern.equals("colour"))
