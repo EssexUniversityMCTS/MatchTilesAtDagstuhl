@@ -14,7 +14,7 @@ public class Match extends Rule {
 
     @Override
     public boolean execute(Game game) {
-        Grid g = game.grid;
+        Grid g = game.conf.grid;
 
         //TODO: Execute changes in the board according to these rules
 
