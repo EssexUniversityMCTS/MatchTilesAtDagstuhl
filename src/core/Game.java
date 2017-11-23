@@ -11,10 +11,7 @@ import java.util.ArrayList;
  */
 public class Game
 {
-    public Grid grid;
-    public Actions actions;
-    public Rules rules;
-    public Termination termination;
+    public GameConfiguration conf;
 
     private MatchTilePlayerFrame frame;
 
@@ -63,11 +60,12 @@ public class Game
             //Ask action to the player.
             frame.gamePanel.repaint();
             ArrayList<MatchTilePlayerAction> tiles = frame.userActionsSinceLastTick();
-            valid = actions.validate(tiles);
+            valid = conf.actions.validate(tiles);
         }
 
-        rules.execute(this);
-        gameOver = termination.check(this);
+        conf.rules.execute(this);
+        gameOver = conf.termination.check(this);
+
     }
 
     /**
@@ -94,32 +92,33 @@ public class Game
     {
         //test
         Game g = new Game();
+        g.conf = new GameConfiguration();
 
         //Grid
-        g.grid = new Grid();
-        g.grid.size = 5;
-        g.grid.init();
+        g.conf.grid = new Grid();
+        g.conf.grid.size = 5;
+        g.conf.grid.init();
 
         //Frame
-        MatchTilePlayerFrame frame = new MatchTilePlayerFrame(g.grid.size, g.grid.size);
+        MatchTilePlayerFrame frame = new MatchTilePlayerFrame(g.conf.grid.size, g.conf.grid.size);
         frame.gamePanel.gameState.update(g);
         frame.updateBoard(frame.gamePanel.gameState);
         g.setFrame(frame);
 
         //Actions
-        g.actions = new Actions();
-        g.actions.actions.add(new Action());
+        g.conf.actions = new Actions();
+        g.conf.actions.actions.add(new Action());
 
         //Rules
-        g.rules = new Rules();
+        g.conf.rules = new Rules();
         Match m = new Match();
         m.number = 3;
         m.reward = 100;
-        g.rules.rules.add(m);
+        g.conf.rules.rules.add(m);
 
         //Terminations
-        g.termination = new Termination();
-        g.termination.value = 100;
+        g.conf.termination = new Termination();
+        g.conf.termination.value = 100;
 
         g.playGame();
 

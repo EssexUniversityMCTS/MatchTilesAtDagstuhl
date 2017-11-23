@@ -3,7 +3,7 @@
 	{
 		"type": "Square",
 		"size": 4, 
-		"MatchTileCell": "Square",
+		"matchtilecell": "Square", 
 		"blocks": "single",
 		"colour": "true"
  		
@@ -16,16 +16,16 @@
 
 	"rules":
 	{
-		"spawning": {"class": "Top", "type": "random"}
+		"spawning": {"from": "Top", "type": "random"}
 		"gravity": {"direction":"down"}
 		"match": 
 		{
-			"class":"Clear",
+			"effect":"Clear",
 			"type":"minimum", 
 			"number": 3,
 			"shapes": "OrthoLine",
 			"pattern": "colour",
-			"reward": {"class": "Incremental", "value":100} 
+			"reward": {"type": "Incremental", "value":100} 
 		}
 	}
 	

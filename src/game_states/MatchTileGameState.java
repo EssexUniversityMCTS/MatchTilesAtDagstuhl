@@ -36,10 +36,10 @@ public class MatchTileGameState {
 
 	public void update(Game game)
 	{
-		int size = game.grid.size;
+		int size = game.conf.grid.size;
 		for (int i = 0; i < size; ++i) {
 			for (int j = 0; j < size; ++j) {
-				this.setCell(i, j, game.grid.grid[i][j].copy());
+				this.setCell(i, j, game.conf.grid.grid[i][j].copy());
 			}
 		}
 	}

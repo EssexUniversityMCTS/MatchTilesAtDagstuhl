@@ -293,7 +293,9 @@ public class JsonReader implements Closeable {
     this.in = in;
   }
 
-  /**
+
+
+    /**
    * Configure this parser to be liberal in what it accepts. By default,
    * this parser is strict and only accepts JSON as specified by <a
    * href="http://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>. Setting the
