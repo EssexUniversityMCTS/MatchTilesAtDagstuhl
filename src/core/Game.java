@@ -55,6 +55,39 @@ public class Game
         this.frame = frame;
     }
 
+    public static void main(String args[])
+    {
+        //test
+        Game g = new Game();
+
+        //Grid
+        g.grid = new Grid();
+        g.grid.size = 5;
+        g.grid.init();
+
+        //Frame
+        MatchTilePlayerFrame frame = new MatchTilePlayerFrame(g.grid.size, g.grid.size);
+        g.setFrame(frame);
+
+        //Actions
+        g.actions = new Actions();
+        g.actions.actions.add(new Action());
+
+        //Rules
+        g.rules = new Rules();
+        Match m = new Match();
+        m.number = 3;
+        m.reward = 100;
+        g.rules.rules.add(m);
+
+        //Terminations
+        g.termination = new Termination();
+        g.termination.value = 100;
+
+        g.playGame();
+
+    }
+
 
 
 }
