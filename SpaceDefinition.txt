@@ -1,3 +1,49 @@
+The definition of a matching tile game consists of:
+
+A. A grid width (2 to 17) and height (2 to 17)
+B. A specification of up to six different tile types (T1 to T6)
+C. A series of response-to-player actions (RA)
+D. A series of spawning actions (SA)
+E. A series of moving actions (MovA)
+F. A series of matching actions (MatchA)
+G. A losing condition (L)
+H. A winning condition (W)
+
+The specification of a tile type consists of:
+
+A. A colour id (green, red, yellow, purple, pink, blue)
+B. A shape (circle, triangle, hexagon, square)
+C. A size (1 to 10), which is relative to the cell size
+
+A response-to-player action consists of:
+
+A. Conjunction/Disjunction specifier
+B. A series of individual match conditions
+C. A boolean indicating that the action only happens if it fires a matching action
+D. A series of board-change actions
+
+An individual matching condition consists of:
+
+A. A boolean indication whether the match needs to hold or not
+B. A specification of the set (S) cell types in the condition
+(how many: dragged empty cells, dragged tiles, empty neighbours, tiled neighbours)
+C. What aspect of the cells are being matched (null, colour, shape, size)
+D. The minimal number of cells in S that must match
+E. A boolean specifying whether the matching group need to be in an ortholine or not (no corners)
+
+A board-change action consists of:
+
+A. An individual matching condition specifying the cells the action occurs on
+B. A single alteration action, from: clear all; populate empty cells; repulse neighbours; switch (for pairs only);
+
+An individual spawning action consists of:
+
+A. A specification of a collection of tile types into a shape (up to 3x3 tiles)
+B. A location (top, bottom, left, right, in-grid) at which the shape will appear
+
+
+
+
 Options:
 
 board properties
@@ -10,7 +56,7 @@ default: single tiles
 ===
 number of tile types (1…6)
 
-cell properties
+tile properties
 colour (1…6)
 shape (circle, triangle, hexagon, square)
 size (1…10)
@@ -24,7 +70,7 @@ drag a tile chain (on/off)
 drag an empty cell chain (on/off)
 
 ===
-tile grouping conditions
+grouping conditions
 
 conjoined/disjoined
 score increase required/not required
@@ -33,7 +79,7 @@ boolean
 (cell type = dragged empty, dragged tile, empty neighbour, tiled neighbour)
 (what aspect is being matched) [null, colour, shape, size]
 (size of the matching group)
- 
+ortholine (yes/no)
 
 ===
 boolean
@@ -49,6 +95,7 @@ switch (2 cells get swapped)
 all empty cells are populated with a member from matching group
 repulse
 
+===
 spawning
 
 
