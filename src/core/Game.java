@@ -58,10 +58,11 @@ public class Game
             //Ask action to the player.
             frame.gamePanel.repaint();
             ArrayList<MatchTilePlayerAction> tiles = frame.userActionsSinceLastTick();
-            valid = conf.actions.execute(this, tiles);
-
             if(tiles.size()>=2)
                 frame.clearActionsSinceLastTick();
+
+            valid = conf.actions.execute(this, tiles);
+
         }
         frame.clearActionsSinceLastTick();
 
