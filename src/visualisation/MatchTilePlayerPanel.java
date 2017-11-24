@@ -143,6 +143,12 @@ public class MatchTilePlayerPanel extends JPanel{
 				if (!gameState.cells[x][y].isEmpty){
 					g.setColor(gameState.cells[x][y].colour);						
 					g.fillRect(cellWidth * x, cellHeight * y, cellWidth, cellHeight);	
+				}else{
+					g.setColor(Color.white);
+					g.fillRect(cellWidth * x, cellHeight * y, cellWidth, cellHeight);
+					g.setColor(Color.black);
+					g.drawLine(cellWidth * x, cellHeight * y, cellWidth * x + cellWidth, cellHeight * y + cellHeight);
+					g.drawLine(cellWidth * x, cellHeight * y + cellHeight, cellWidth * x + cellWidth, cellHeight * y);
 				}
 			}
 		}

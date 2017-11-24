@@ -21,6 +21,7 @@ public class MatchTilePlayerFrame extends JFrame implements ComponentListener{
 		mtpf.gamePanel.gameState.setColour(1, 1, Color.blue);
 		mtpf.gamePanel.gameState.setColour(1, 2, Color.green);
 		mtpf.gamePanel.gameState.setColour(3, 3, Color.red);
+		mtpf.gamePanel.gameState.cells[2][2].isEmpty = true;
 		mtpf.updateBoard(mtpf.gamePanel.gameState);
 	}
 	
