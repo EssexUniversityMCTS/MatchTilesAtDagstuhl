@@ -25,10 +25,13 @@ public class Action {
             return false;
 
         MatchTilePlayerAction mtpa = null;
-        if(tiles.get(1).highlightedCells.size() == 2)
+
+        if(tiles.get(1) != null)
+
+        if((tiles.get(1) != null) && tiles.get(1).highlightedCells.size() == 2)
         {
             mtpa = tiles.get(1);
-        }else if(tiles.get(2).highlightedCells.size() == 2)
+        }else if((tiles.get(2) != null) && tiles.get(2).highlightedCells.size() == 2)
         {
             mtpa = tiles.get(2);
         }else{
