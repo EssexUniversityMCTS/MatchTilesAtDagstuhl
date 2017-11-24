@@ -19,6 +19,7 @@ public class MatchTilePlayerFrame extends JFrame implements ComponentListener{
 	public static void main(String[] args){
 		MatchTilePlayerFrame mtpf = new MatchTilePlayerFrame(5, 5);
 		mtpf.gamePanel.gameState.setColour(1, 1, Color.blue);
+		mtpf.gamePanel.gameState.setColour(1, 2, Color.green);
 		mtpf.gamePanel.gameState.setColour(3, 3, Color.red);
 		mtpf.updateBoard(mtpf.gamePanel.gameState);
 	}
@@ -65,10 +66,12 @@ public class MatchTilePlayerFrame extends JFrame implements ComponentListener{
 	
 	public ArrayList<MatchTilePlayerAction> userActionsSinceLastTick(){
 		ArrayList<MatchTilePlayerAction> userActions = (ArrayList<MatchTilePlayerAction>)gamePanel.userActions.clone();
-		if(userActions.size() > 0)
-			System.out.println("->" + userActions.size());
-		gamePanel.userActions.clear();
 		return userActions;
+	}
+
+	public void clearActionsSinceLastTick()
+	{
+		gamePanel.userActions.clear();
 	}
 
 }

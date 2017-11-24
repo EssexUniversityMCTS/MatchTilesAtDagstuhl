@@ -103,8 +103,10 @@ public class MatchTilePlayerPanel extends JPanel{
 				}
 			}
 			userActions.add(userAction);
+			updateBoard();
 		}
-		updateBoard();
+
+		//userActions.clear();
 	}
 	
 	public MatchTileCell getCellAtPoint(Point p){

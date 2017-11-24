@@ -28,7 +28,7 @@ public class Match extends Rule {
                 Color lastColour = g.grid[i][0].colour;
                 int matchLength = g.grid[i][0].isEmpty ? 0 : 1;
                 for (int j = 1; j < g.size; ++j) {
-                    if (!g.grid[i][j].isEmpty && g.grid[i][j].colour == lastColour) {
+                    if (!g.grid[i][j].isEmpty && g.grid[i][j].colour.equals(lastColour)) {
                         ++matchLength;
                     }
                     else {
@@ -53,7 +53,7 @@ public class Match extends Rule {
                 Color lastColour = g.grid[0][i].colour;
                 int matchLength = g.grid[0][i].isEmpty ? 0 : 1;
                 for (int j = 1; j < g.size; ++j) {
-                    if (!g.grid[j][i].isEmpty && g.grid[j][i].colour == lastColour) {
+                    if (!g.grid[j][i].isEmpty && g.grid[j][i].colour.equals(lastColour)) {
                         ++matchLength;
                     }
                     else {
