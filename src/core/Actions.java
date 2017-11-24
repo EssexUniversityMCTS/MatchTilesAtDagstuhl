@@ -26,4 +26,11 @@ public class Actions {
         }
         return valid;
     }
+
+    public String toString () {
+        StringBuffer sb = new StringBuffer ("Grid: ");
+        sb.append ("\n");
+        return sb.toString ();
+    };
+
 }

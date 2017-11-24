@@ -41,4 +41,11 @@ public class Grid {
         g.init();
         int a = 0;
     }
+
+    public String toString () {
+        StringBuffer sb = new StringBuffer ("Grid: ");
+        sb.append ("Type: " + type + ", size: " + size + ", cell" + cell + ", blocks" + blocks + ", color" + color);
+        sb.append ("\n");
+        return sb.toString ();
+    };
 }

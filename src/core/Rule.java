@@ -7,4 +7,10 @@ public abstract class Rule {
 
     public abstract boolean execute(Game game);
 
+    public String toString () {
+        StringBuffer sb = new StringBuffer ("Rule: ");
+        sb.append ("\n");
+        return sb.toString ();
+    };
+
 }

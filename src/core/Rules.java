@@ -31,4 +31,15 @@ public class Rules {
         }
     }
 
+    public String toString () {
+        StringBuffer sb = new StringBuffer ("Rules: ");
+        if (rules != null) {
+            for (Rule rule : rules) {
+                sb.append (rules.toString ());
+            }
+        }
+        sb.append ("\n");
+        return sb.toString ();
+    };
+
 }
